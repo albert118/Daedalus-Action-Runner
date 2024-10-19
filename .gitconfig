@@ -1,0 +1,21 @@
+[core]
+    # Ignore changes made in file mode to ensure a Linux file isn't overwritten on Windows
+    fileMode = false
+
+    # Ensure files from case sensitive systems don't create conflicts on case insensitive system
+    ignorecase = true
+
+    # Persist line endings as LF but don't do so in the working directory
+    # .gitattributes + .editorconfig can figure this out as needed
+    autocrlf = input
+
+    # Don't emit the "File will have LF line endings..." warning
+    safecrlf = false
+
+[fetch]
+    # auto prune deleted branches locally
+    prune = true
+
+[push]
+    # auto push to (ie. "git push -u origin HEAD" becomes "git push")
+    autoSetupRemote = true

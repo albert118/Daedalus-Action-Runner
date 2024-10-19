@@ -1,0 +1,9 @@
+# Automatically normalise file endings to LF
+*           text=auto eol=lf
+
+# specific overrides
+*.bash      diff=bash
+*.bat       eol=crlf
+*.cmd       eol=crlf
+*.sh        diff=bash
+*.md        diff=markdown

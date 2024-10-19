@@ -1,4 +1,6 @@
 .gitignore
+.gitconfig
+.gitattributes
 .dockerignore
 *.md
 package.json
