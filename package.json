@@ -1,6 +1,7 @@
 {
 	"scripts": {
-		"runner:dev": "docker build . -t action-runner && docker compose up -d && docker compose logs -f",
+		"build": "docker build . -t action-runner --no-cache",
+		"runner:dev": "npm run build && docker compose up -d && docker compose logs -f",
 		"runner:scaled": "docker compose up --scale runner=3 -d"
 	},
 	"author": "Albert Ferguson"

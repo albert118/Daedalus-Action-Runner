@@ -3,6 +3,9 @@ FROM debian:bookworm-slim
 ARG DOCKER_USER=gh-action-runner
 ENV DOCKER_USER=$DOCKER_USER
 
+ARG TARGET_REPO_URL
+ENV TARGET_REPO_URL=$TARGET_REPO_URL
+
 ARG RUNNER_VERSION="2.320.0"
 
 # prevent the install script prompting for user interaction
@@ -23,10 +26,10 @@ RUN cd /home/$DOCKER_USER/action-runner \
 RUN chown -R $DOCKER_USER:$DOCKER_USER /home/$DOCKER_USER
 RUN /home/$DOCKER_USER/action-runner/bin/installdependencies.sh
 
-COPY start.sh start.sh
+COPY entrypoint.sh entrypoint.sh
 
-RUN chmod +x start.sh
+RUN chmod +x entrypoint.sh
 
 USER $DOCKER_USER
 
-ENTRYPOINT [ "./start.sh" ]
+ENTRYPOINT [ "./entrypoint.sh" ]
