@@ -4,4 +4,5 @@ services:
         environment:
             - ACCESS_TOKEN=${ACCESS_TOKEN}
             - DOCKER_USER=gh-action-runner
-            - TARGET_REPO_URL=https://github.com/albert118/daedalus-project-docs
+            - OWNER=albert118
+            - REPO=daedalus-project-docs

@@ -1,6 +1,6 @@
 {
 	"scripts": {
-		"build": "docker build . -t action-runner --no-cache",
+		"build": "docker build . -t action-runner",
 		"runner:dev": "npm run build && docker compose up -d && docker compose logs -f",
 		"runner:scaled": "docker compose up --scale runner=3 -d"
 	},
