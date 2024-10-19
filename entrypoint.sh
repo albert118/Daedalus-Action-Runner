@@ -1,11 +1,18 @@
 #!/bin/bash
 
-echo $OWNER
-echo $REPO
+echo "Starting action runner..."
+echo "Will configure action runner for '${REPO}' owned by: ${OWNER}"
 
-REG_TOKEN=$(curl -sX POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${ACCESS_TOKEN}" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/${OWNER}/${REPO}/actions/runners/registration-token | jq .token --raw-output)
+RESPONSE=$(curl -sX POST \
+    -H "Accept: application/vnd.github+json"\
+    -H "Authorization: Bearer ${ACCESS_TOKEN}"\
+    -H "X-GitHub-Api-Version: 2022-11-28"\
+    https://api.github.com/repos/${OWNER}/${REPO}/actions/runners/registration-token)
 
 cd /home/$DOCKER_USER/action-runner
+
+REG_TOKEN=$(echo "$RESPONSE" | jq -r '.token')
+echo "Configuring action runnner using token: ${REG_TOKEN}"
 
 ./config.sh --url https://github.com/${OWNER}/${REPO} --token ${REG_TOKEN}
 

@@ -1,7 +1,6 @@
 {
 	"scripts": {
-		"build": "docker build . -t action-runner",
-		"runner:dev": "npm run build && docker compose up -d && docker compose logs -f",
+		"runner:dev": "docker compose up -d --build --force-recreate && docker compose logs -f",
 		"runner:scaled": "docker compose up --scale runner=3 -d"
 	},
 	"author": "Albert Ferguson"

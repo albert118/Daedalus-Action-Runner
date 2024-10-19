@@ -5,4 +5,4 @@ services:
             - ACCESS_TOKEN=${ACCESS_TOKEN}
             - DOCKER_USER=gh-action-runner
             - OWNER=albert118
-            - REPO=daedalus-project-docs
+            - REPO=daedalus-action-runner
