@@ -13,15 +13,15 @@ RUN apt-get update -y && apt-get upgrade -y \
     && mkdir /home/$DOCKER_USER/action-runner
 
 RUN apt-get install -y --no-install-recommends \
-    curl build-essential libssl-dev libffi-dev python3 python3-venv python3-dev python3-pip
+    curl jq build-essential libssl-dev libffi-dev python3 python3-venv python3-dev python3-pip
 
 # install the action runner
 RUN cd /home/$DOCKER_USER/action-runner \
- && curl -o actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz -L https://github.com/actions/runner/releases/download/v2.320.0/actions-runner-linux-x64-2.320.0.tar.gz \
-  && tar xzf ./actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz
+    && curl -o actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz -L https://github.com/actions/runner/releases/download/v2.320.0/actions-runner-linux-x64-2.320.0.tar.gz \
+    && tar xzf ./actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz
 
 RUN chown -R $DOCKER_USER:$DOCKER_USER /home/$DOCKER_USER
-RUN /home/$DOCKER_USER/action-runner/bin/installdepdendencies.sh
+RUN /home/$DOCKER_USER/action-runner/bin/installdependencies.sh
 
 COPY start.sh start.sh
 
