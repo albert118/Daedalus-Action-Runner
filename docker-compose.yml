@@ -1,0 +1,6 @@
+services:
+    action-runner:
+        restart: unless-stopped
+        build: .
+        environment:
+            - ACCESS_TOKEN=${GH_PAT}
